@@ -2,11 +2,11 @@
 
 --Definindo o modulo(inicial)
 {
-    module MiniPythonLexer where
-    import MiniPythonToken --Lexer reconhecer o tipo Token
+module MiniPythonLexer where
+import MiniPythonToken
 }
 
-%wrapper "monadUserState"
+%wrapper "monad"
 
 
 --Estrtura do Lex 
@@ -32,7 +32,8 @@ position (AlexPn _ line colum) = Position line colum --descarta o primeiro valor
 alexEOF :: Alex Token
 alexEOF = pure $ Token (Position 0 0) TkEOF
 
--- Função principal do lexer
+
+-- Função principal do lexer(percorre todo o arquivo)
 lexer :: String -> Either String [Token]
 lexer s = runAlex s go
     where
