@@ -4,11 +4,12 @@ module MiniPythonToken where
 
 --Guardando a posição de cada token 
 data Position = Position 
-{
-    line :: int,
-    colum :: int
-}
-deriving(Show, Eq)
+
+    {line :: Int
+    , colum :: Int
+    }
+
+    deriving(Show, Eq)
 
 --Criando o token + posição + caractere lido
 data Token 
@@ -18,7 +19,7 @@ data Token
 --caracters que vão sendo lidos(tipos básicos que o lexe produz)
 data Lexeme
     = TkPlus
-    | TkEOf
+    | TkEOF
     deriving(Show, Eq)
 
 --Verifica se o token é um lex válido
