@@ -14,7 +14,6 @@ $white = [\ \t\n\r]
 $digit = [0-9]
 @number = $digit+
 -- numero com expoente
-@number = $digit+
 @frac = \. $digit+
 @exponent = [eE] [\+\-]? $digit+
 
@@ -66,6 +65,7 @@ tokens :-
 --numero com expoente
 <0> $digit+ @exponent {floatToken}
 <0> @number {intToken}
+
 --Palavras reservadas
 <0> "and"      {simpleToken TkAnd}
 <0> "break"    {simpleToken TkBreak}
@@ -120,7 +120,6 @@ alexInitUserState = AlexUserState
     , parenLevel    = 0
     , lastNewline   = Position 0 0
     }
-
 
 
 -- Posição do primeiro token da linha atual-> Posição do token atual que encerrou a linha anterior-> 
